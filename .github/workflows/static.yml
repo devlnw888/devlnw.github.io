@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+    <!-- Meta tags for character set and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page Title -->
     <title>บทเรียนออนไลน์ Animation 3D - โดย Yanapat</title>
     
+    <!-- Google Fonts for an elegant look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- Internal CSS for styling -->
     <style>
-        /* --- Base Styles --- */
+        /* --- CSS Variables for Theme Colors --- */
         :root {
-            --color-black: #1A1A1A;
-            --color-brown: #4A3F35;
-            --color-gold: #C5A47E;
-            --color-light-gold: #E1CDAE;
-            --color-text: #F0F0F0;
+            --color-black: #1a1a1a;      /* Deep black for background */
+            --color-brown: #4a3f35;      /* Rich brown for cards */
+            --color-gold: #c5a47e;       /* Elegant gold for accents and titles */
+            --color-light-gold: #e1cdae; /* Lighter gold for text and highlights */
+            --color-text: #f0f0f0;       /* Off-white for readability */
         }
 
+        /* --- Base Body Styles --- */
         body {
             font-family: 'Sarabun', sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--color-black);
             color: var(--color-text);
+            line-height: 1.6;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px 0;
         }
 
         /* --- Header & Navigation --- */
         .main-header {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(26, 26, 26, 0.8); /* Semi-transparent background */
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px); /* Frosted glass effect */
             border-bottom: 1px solid var(--color-gold);
         }
 
-        .main-header .container {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo {
@@ -71,24 +81,28 @@
         }
 
         .main-nav li {
-            margin-left: 25px;
+            margin-left: 30px;
         }
 
         .main-nav a {
             color: var(--color-light-gold);
             text-decoration: none;
             font-size: 1em;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .main-nav a:hover, .main-nav a.active {
             color: var(--color-gold);
-            text-shadow: 0 0 5px var(--color-gold);
+            text-shadow: 0 0 5px rgba(197, 164, 126, 0.7);
         }
 
         /* --- Banner Section --- */
         .banner {
-            background-image: url('https://via.placeholder.com/1500x500/1a1a1a/c5a47e?text=Technology+Background');
+            /* --- !! IMPORTANT CHANGE !! --- */
+            /* เปลี่ยนจากการใช้ URL ภายนอก มาเป็นไฟล์ในโปรเจกต์ */
+            /* Make sure you have a folder named 'images' and a file 'banner-bg.jpg' inside it. */
+            background-image: url('./images/banner-bg.jpg');
+            background-color: var(--color-brown); /* Fallback color */
             background-size: cover;
             background-position: center;
             padding: 100px 0;
@@ -96,7 +110,8 @@
             color: #fff;
             position: relative;
         }
-
+        
+        /* Dark overlay for better text visibility */
         .banner::after {
             content: '';
             position: absolute;
@@ -104,7 +119,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
         }
         
         .banner-content {
@@ -113,26 +128,27 @@
         }
 
         .banner h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin: 0;
             color: var(--color-gold);
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
         }
         
         .banner p {
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: var(--color-light-gold);
+            margin-top: 10px;
         }
 
         /* --- Knowledge Section --- */
         .knowledge-section {
-            padding: 50px 0;
+            padding: 60px 0;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5em;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             color: var(--color-gold);
         }
 
@@ -145,32 +161,34 @@
         .knowledge-card {
             background-color: var(--color-brown);
             border: 1px solid var(--color-gold);
-            border-radius: 8px;
-            padding: 25px;
+            border-radius: 10px;
+            padding: 30px;
             text-align: center;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
         }
 
         .knowledge-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(197, 164, 126, 0.2);
+            box-shadow: 0 10px 25px rgba(197, 164, 126, 0.2);
         }
         
         .card-icon {
             font-size: 3.5em; /* Icon size */
             color: var(--color-gold);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(197, 164, 126, 0.5);
         }
 
         .knowledge-card h3 {
-            font-size: 1.4em;
+            font-size: 1.5em;
             margin: 10px 0;
             color: var(--color-light-gold);
         }
         
         .knowledge-card p {
-            font-size: 0.9em;
+            font-size: 1em;
             color: var(--color-text);
             opacity: 0.8;
         }
@@ -178,9 +196,9 @@
         /* --- Footer --- */
         .main-footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             margin-top: 40px;
-            background-color: var(--color-brown);
+            background-color: #111;
             border-top: 1px solid var(--color-gold);
         }
 
@@ -188,8 +206,9 @@
 </head>
 <body>
 
+    <!-- ==================== Header Section ==================== -->
     <header class="main-header">
-        <div class="container">
+        <div class="header-container">
             <a href="#" class="logo">บทเรียนออนไลน์ <span>[Animation 3D]</span></a>
             <nav class="main-nav">
                 <ul>
@@ -206,6 +225,7 @@
     </header>
 
     <main>
+        <!-- ==================== Banner Section ==================== -->
         <section class="banner">
              <div class="banner-content">
                 <h1>Welcome to 3D Animation Class</h1>
@@ -213,53 +233,62 @@
             </div>
         </section>
         
+        <!-- ==================== Knowledge Content Section ==================== -->
         <section class="knowledge-section">
             <div class="container">
                 <h2 class="section-title">ใบความรู้ (Knowledge Base)</h2>
                 
                 <div class="knowledge-grid">
+                    <!-- Card 1: Introduction -->
                     <div class="knowledge-card" onclick="location.href='#';">
                         <div class="card-icon">🎬</div>
                         <h3>บทที่ 1: Introduction</h3>
                         <p>ความรู้เบื้องต้นเกี่ยวกับแอนิเมชัน 3 มิติ</p>
                     </div>
 
+                    <!-- Card 2: Principles -->
                     <div class="knowledge-card" onclick="location.href='#';">
                         <div class="card-icon">📜</div>
                         <h3>บทที่ 2: Principles of 3D Animation</h3>
                         <p>หลักการและทฤษฎีพื้นฐานของงานแอนิเมชัน</p>
                     </div>
 
+                    <!-- Card 3: Elements of Action -->
                     <div class="knowledge-card" onclick="location.href='#';">
                         <div class="card-icon">🏃</div>
                         <h3>บทที่ 3: Elements of Action</h3>
                         <p>องค์ประกอบของการเคลื่อนไหวในงานแอนิเมชัน</p>
                     </div>
                     
+                    <!-- Card 4: Movement -->
                     <div class="knowledge-card" onclick="location.href='#';">
                         <div class="card-icon">💨</div>
                         <h3>บทที่ 4: Movement</h3>
                         <p>การสร้างการเคลื่อนไหวที่สมจริงและมีชีวิตชีวา</p>
                     </div>
 
+                    <!-- Card 5: Composition -->
                     <div class="knowledge-card" onclick="location.href='#';">
                         <div class="card-icon">🖼️</div>
                         <h3>บทที่ 5: Composition</h3>
                         <p>การจัดองค์ประกอบภาพเพื่อการเล่าเรื่อง</p>
                     </div>
 
+                    <!-- Card 6: Rigging -->
                     <div class="knowledge-card" onclick="location.href='#';">
                         <div class="card-icon">🦴</div>
                         <h3>บทที่ 6: Rigging</h3>
                         <p>กระบวนการใส่กระดูกให้กับโมเดล 3 มิติ</p>
                     </div>
 
+                    <!-- Card 7: Software -->
                     <div class="knowledge-card" onclick="location.href='#';">
                         <div class="card-icon">💻</div>
                         <h3>บทที่ 7: Software for 3D Animation</h3>
                         <p>แนะนำซอฟต์แวร์ที่ใช้ในวงการแอนิเมชัน</p>
                     </div>
 
+                    <!-- Card 8: Project -->
                     <div class="knowledge-card" onclick="location.href='#';">
                         <div class="card-icon">🏆</div>
                         <h3>บทที่ 8: Practical Project</h3>
@@ -270,6 +299,7 @@
         </section>
     </main>
 
+    <!-- ==================== Footer Section ==================== -->
     <footer class="main-footer">
         <p>&copy; 2025 จัดทำโดย Yanapat | สงวนลิขสิทธิ์</p>
     </footer>
