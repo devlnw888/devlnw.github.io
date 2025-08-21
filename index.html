@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทเรียนออนไลน์ - Animation 3D</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #8B4513 0%, #D4AF37 50%, #1a1a1a 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+        
+        .nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            color: #D4AF37;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .chapter-icon {
+            background: linear-gradient(45deg, #D4AF37, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Header -->
+    <header class="bg-black shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-lg flex items-center justify-center">
+                        <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-yellow-400">บทเรียนออนไลน์</h1>
+                        <p class="text-sm text-gray-300">Animation 3D</p>
+                    </div>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-item text-white hover:text-yellow-400">หน้าแรก</a>
+                    <a href="#" class="nav-item text-white hover:text-yellow-400">คำอธิบายรายวิชา</a>
+                    <a href="#" class="nav-item text-white hover:text-yellow-400">ใบความรู้</a>
+                    <a href="#" class="nav-item text-white hover:text-yellow-400">ใบกิจกรรม</a>
+                    <a href="#" class="nav-item text-white hover:text-yellow-400">แบบทดสอบ</a>
+                    <a href="#" class="nav-item text-white hover:text-yellow-400">สื่อวิดีทัศน์</a>
+                    <a href="#" class="nav-item text-white hover:text-yellow-400">ผู้จัดทำ</a>
+                </nav>
+                
+                <button class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="gradient-bg py-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="floating-animation mb-8">
+                <svg class="w-24 h-24 mx-auto text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </div>
+            <h1 class="text-5xl font-bold mb-4 text-white">ยินดีต้อนรับสู่บทเรียน</h1>
+            <h2 class="text-3xl font-semibold mb-6 text-yellow-400">Animation 3D</h2>
+            <p class="text-xl text-gray-200 max-w-2xl mx-auto mb-8">
+                เรียนรู้เทคนิคการสร้างแอนิเมชัน 3 มิติ ตั้งแต่พื้นฐานจนถึงขั้นสูง พร้อมโปรเจกต์จริงที่จะทำให้คุณเป็นมืออาชีพ
+            </p>
+            <button class="bg-yellow-600 hover:bg-yellow-700 text-black font-semibold px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105">
+                เริ่มเรียนเลย
+            </button>
+        </div>
+    </section>
+
+    <!-- Course Content -->
+    <section class="py-16 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-yellow-400">เนื้อหาบทเรียน</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Chapter 1 -->
+                <div class="card-hover bg-gradient-to-br from-amber-900 to-amber-800 rounded-xl p-6 border border-yellow-600">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">บทที่ 1</h3>
+                        <h4 class="text-lg font-semibold text-white mb-3">Introduction</h4>
+                        <p class="text-gray-300 text-sm mb-4">รู้จักกับโลกของแอนิเมชัน 3D และพื้นฐานที่จำเป็น</p>
+                    </div>
+                    <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-semibold py-2 rounded-lg transition-all duration-300">
+                        เรียนบทนี้
+                    </button>
+                </div>
+
+                <!-- Chapter 2 -->
+                <div class="card-hover bg-gradient-to-br from-amber-900 to-amber-800 rounded-xl p-6 border border-yellow-600">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">บทที่ 2</h3>
+                        <h4 class="text-lg font-semibold text-white mb-3">Principles of 3D Animation</h4>
+                        <p class="text-gray-300 text-sm mb-4">หลักการพื้นฐานของการสร้างแอนิเมชัน 3 มิติ</p>
+                    </div>
+                    <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-semibold py-2 rounded-lg transition-all duration-300">
+                        เรียนบทนี้
+                    </button>
+                </div>
+
+                <!-- Chapter 3 -->
+                <div class="card-hover bg-gradient-to-br from-amber-900 to-amber-800 rounded-xl p-6 border border-yellow-600">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">บทที่ 3</h3>
+                        <h4 class="text-lg font-semibold text-white mb-3">Elements of Action</h4>
+                        <p class="text-gray-300 text-sm mb-4">องค์ประกอบของการเคลื่อนไหวในแอนิเมชัน</p>
+                    </div>
+                    <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-semibold py-2 rounded-lg transition-all duration-300">
+                        เรียนบทนี้
+                    </button>
+                </div>
+
+                <!-- Chapter 4 -->
+                <div class="card-hover bg-gradient-to-br from-amber-900 to-amber-800 rounded-xl p-6 border border-yellow-600">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">บทที่ 4</h3>
+                        <h4 class="text-lg font-semibold text-white mb-3">Movement</h4>
+                        <p class="text-gray-300 text-sm mb-4">เทคนิคการสร้างการเคลื่อนไหวที่สมจริง</p>
+                    </div>
+                    <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-semibold py-2 rounded-lg transition-all duration-300">
+                        เรียนบทนี้
+                    </button>
+                </div>
+
+                <!-- Chapter 5 -->
+                <div class="card-hover bg-gradient-to-br from-amber-900 to-amber-800 rounded-xl p-6 border border-yellow-600">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">บทที่ 5</h3>
+                        <h4 class="text-lg font-semibold text-white mb-3">Composition</h4>
+                        <p class="text-gray-300 text-sm mb-4">การจัดองค์ประกอบและมุมกล้องในแอนิเมชัน</p>
+                    </div>
+                    <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-semibold py-2 rounded-lg transition-all duration-300">
+                        เรียนบทนี้
+                    </button>
+                </div>
+
+                <!-- Chapter 6 -->
+                <div class="card-hover bg-gradient-to-br from-amber-900 to-amber-800 rounded-xl p-6 border border-yellow-600">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">บทที่ 6</h3>
+                        <h4 class="text-lg font-semibold text-white mb-3">Rigging</h4>
+                        <p class="text-gray-300 text-sm mb-4">การสร้างโครงกระดูกและระบบควบคุมตัวละคร</p>
+                    </div>
+                    <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-semibold py-2 rounded-lg transition-all duration-300">
+                        เรียนบทนี้
+                    </button>
+                </div>
+
+                <!-- Chapter 7 -->
+                <div class="card-hover bg-gradient-to-br from-amber-900 to-amber-800 rounded-xl p-6 border border-yellow-600">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">บทที่ 7</h3>
+                        <h4 class="text-lg font-semibold text-white mb-3">Software for 3D Animation</h4>
+                        <p class="text-gray-300 text-sm mb-4">รู้จักซอฟต์แวร์สำหรับสร้างแอนิเมชัน 3D</p>
+                    </div>
+                    <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-semibold py-2 rounded-lg transition-all duration-300">
+                        เรียนบทนี้
+                    </button>
+                </div>
+
+                <!-- Chapter 8 -->
+                <div class="card-hover bg-gradient-to-br from-amber-900 to-amber-800 rounded-xl p-6 border border-yellow-600">
+                    <div class="text-center mb-4">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">บทที่ 8</h3>
+                        <h4 class="text-lg font-semibold text-white mb-3">Practical Project</h4>
+                        <p class="text-gray-300 text-sm mb-4">โปรเจกต์จริงเพื่อฝึกฝนทักษะที่ได้เรียนรู้</p>
+                    </div>
+                    <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-semibold py-2 rounded-lg transition-all duration-300">
+                        เรียนบทนี้
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-yellow-400">จุดเด่นของหลักสูตร</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full flex items-center justify-center pulse-animation">
+                        <svg class="w-10 h-10 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">เรียนรู้แบบขั้นตอน</h3>
+                    <p class="text-gray-300">เนื้อหาจัดเรียงอย่างเป็นระบบ เริ่มจากพื้นฐานไปสู่ขั้นสูง</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full flex items-center justify-center pulse-animation">
+                        <svg class="w-10 h-10 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">สื่อการเรียนรู้หลากหลาย</h3>
+                    <p class="text-gray-300">ใบความรู้ วิดีโอ และแบบฝึกหัดครบครัน</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-full flex items-center justify-center pulse-animation">
+                        <svg class="w-10 h-10 text-black" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-yellow-400 mb-3">โปรเจกต์จริง</h3>
+                    <p class="text-gray-300">ฝึกฝนด้วยโปรเจกต์จริงที่นำไปใช้งานได้</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-yellow-400 mb-2">บทเรียนออนไลน์ Animation 3D</h3>
+                <p class="text-gray-400">เรียนรู้เทคนิคการสร้างแอนิเมชัน 3D อย่างมืออาชีพ</p>
+            </div>
+            <div class="border-t border-gray-700 pt-4">
+                <p class="text-gray-500">&copy; 2024 บทเรียนออนไลน์ Animation 3D. สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add click functionality to chapter buttons
+        document.querySelectorAll('.card-hover button').forEach((button, index) => {
+            button.addEventListener('click', function() {
+                const chapterNumber = index + 1;
+                alert(`เริ่มเรียนบทที่ ${chapterNumber} แล้ว! 🎬`);
+                
+                // Add visual feedback
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Add mobile menu toggle
+        const mobileMenuButton = document.querySelector('button.md\\:hidden');
+        const nav = document.querySelector('nav');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function() {
+                nav.classList.toggle('hidden');
+            });
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9728d885b2148941',t:'MTc1NTc2NTgzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
