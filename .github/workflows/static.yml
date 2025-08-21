@@ -12,11 +12,11 @@
     <style>
         /* --- Base Styles --- */
         :root {
-            --color-black: #1a1a1a;
-            --color-brown: #4a3f35;
-            --color-gold: #c5a47e;
-            --color-light-gold: #e1cdae;
-            --color-text: #f0f0f0;
+            --color-black: #1A1A1A;
+            --color-brown: #4A3F35;
+            --color-gold: #C5A47E;
+            --color-light-gold: #E1CDAE;
+            --color-text: #F0F0F0;
         }
 
         body {
